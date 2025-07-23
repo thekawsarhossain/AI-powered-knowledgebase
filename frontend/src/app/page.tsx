@@ -1,14 +1,24 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BookOpen, Search, Sparkles, ArrowRight, Users, Shield, TrendingUp } from 'lucide-react';
+import {
+  BookOpen,
+  Search,
+  Sparkles,
+  ArrowRight,
+  Users,
+  Shield,
+  TrendingUp,
+} from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'AI-Powered Knowledge Base - Organize, Search, and Summarize',
-  description: 'Create, organize, and discover your knowledge with intelligent AI summarization. Transform your articles into actionable insights with powerful search capabilities.',
+  description:
+    'Create, organize, and discover your knowledge with intelligent AI summarization. Transform your articles into actionable insights with powerful search capabilities.',
   openGraph: {
     title: 'AI-Powered Knowledge Base',
-    description: 'Create, organize, and discover your knowledge with intelligent AI summarization',
+    description:
+      'Create, organize, and discover your knowledge with intelligent AI summarization',
   },
 };
 
@@ -20,7 +30,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <BookOpen className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold text-gray-900">Knowledge Base</span>
+            <span className="text-2xl font-bold text-gray-900">
+              Knowledge Base
+            </span>
           </div>
           <div className="flex gap-4">
             <Link href="/login">
@@ -41,8 +53,9 @@ export default function HomePage() {
             <span className="text-primary block">Knowledge Base</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Create, organize, and discover your knowledge with intelligent AI summarization.
-            Transform your articles into actionable insights with powerful search capabilities.
+            Create, organize, and discover your knowledge with intelligent AI
+            summarization. Transform your articles into actionable insights with
+            powerful search capabilities.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/signup">
@@ -66,10 +79,12 @@ export default function HomePage() {
               <div className="bg-primary/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                 <BookOpen className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Create & Organize</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                Create & Organize
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                Write rich articles with markdown support, organize them with tags,
-                and build your personal knowledge repository.
+                Write rich articles with markdown support, organize them with
+                tags, and build your personal knowledge repository.
               </p>
             </div>
           </div>
@@ -79,10 +94,12 @@ export default function HomePage() {
               <div className="bg-primary/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                 <Search className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Smart Search</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                Smart Search
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                Find exactly what you need with powerful full-text search,
-                tag filtering, and intelligent content discovery.
+                Find exactly what you need with powerful full-text search, tag
+                filtering, and intelligent content discovery.
               </p>
             </div>
           </div>
@@ -92,7 +109,9 @@ export default function HomePage() {
               <div className="bg-primary/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                 <Sparkles className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">AI Summaries</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                AI Summaries
+              </h3>
               <p className="text-gray-600 leading-relaxed">
                 Get instant, intelligent summaries of your articles powered by
                 advanced AI to quickly grasp key insights.
@@ -110,7 +129,8 @@ export default function HomePage() {
               Built for Modern Knowledge Workers
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to capture, organize, and leverage your knowledge effectively.
+              Everything you need to capture, organize, and leverage your
+              knowledge effectively.
             </p>
           </div>
 
@@ -120,9 +140,12 @@ export default function HomePage() {
                 <Users className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Personal & Secure</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Personal & Secure
+                </h4>
                 <p className="text-gray-600 text-sm">
-                  Your articles are private and secure. Only you can access and manage your content.
+                  Your articles are private and secure. Only you can access and
+                  manage your content.
                 </p>
               </div>
             </div>
@@ -132,9 +155,12 @@ export default function HomePage() {
                 <Shield className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Fast & Reliable</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Fast & Reliable
+                </h4>
                 <p className="text-gray-600 text-sm">
-                  Built with modern technologies for lightning-fast performance and reliability.
+                  Built with modern technologies for lightning-fast performance
+                  and reliability.
                 </p>
               </div>
             </div>
@@ -144,9 +170,12 @@ export default function HomePage() {
                 <TrendingUp className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Smart Analytics</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Smart Analytics
+                </h4>
                 <p className="text-gray-600 text-sm">
-                  Track your writing progress and discover insights about your knowledge base.
+                  Track your writing progress and discover insights about your
+                  knowledge base.
                 </p>
               </div>
             </div>
@@ -161,8 +190,8 @@ export default function HomePage() {
             Ready to Transform Your Knowledge?
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of knowledge workers who use our platform to organize,
-            discover, and leverage their expertise.
+            Join thousands of knowledge workers who use our platform to
+            organize, discover, and leverage their expertise.
           </p>
           <Link href="/signup">
             <Button size="lg" className="text-lg px-12 py-6">

@@ -8,12 +8,16 @@ const router = Router();
 const aiController = new AIController();
 
 const summarizeArticleSchema = z.object({
-    params: z.object({
-        id: z.string().cuid('Invalid article ID')
-    })
+  params: z.object({
+    id: z.string().cuid('Invalid article ID'),
+  }),
 });
 
 router.use(authenticateToken);
-router.post('/summarize/:id', validate(summarizeArticleSchema), aiController.summarizeArticle);
+router.post(
+  '/summarize/:id',
+  validate(summarizeArticleSchema),
+  aiController.summarizeArticle
+);
 
 export default router;

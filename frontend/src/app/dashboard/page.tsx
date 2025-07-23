@@ -17,13 +17,13 @@ interface DashboardPageProps {
 }
 
 async function ArticleList({
-  searchParams
+  searchParams,
 }: {
   searchParams: Promise<{
     search?: string;
     tags?: string;
     page?: string;
-  }>
+  }>;
 }) {
   try {
     // Await searchParams
@@ -33,7 +33,7 @@ async function ArticleList({
       search: resolvedSearchParams.search,
       tags: resolvedSearchParams.tags,
       page: resolvedSearchParams.page ? parseInt(resolvedSearchParams.page) : 1,
-      limit: 12
+      limit: 12,
     };
 
     const result = await serverApiClient.getArticles(params);
@@ -42,12 +42,13 @@ async function ArticleList({
       return (
         <div className="text-center py-12">
           <FileText className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-          <p className="text-lg font-medium text-gray-900 mb-2">No articles found</p>
+          <p className="text-lg font-medium text-gray-900 mb-2">
+            No articles found
+          </p>
           <p className="text-gray-500 mb-6">
             {resolvedSearchParams.search || resolvedSearchParams.tags
-              ? "Try adjusting your search criteria or create a new article."
-              : "Start building your knowledge base by creating your first article."
-            }
+              ? 'Try adjusting your search criteria or create a new article.'
+              : 'Start building your knowledge base by creating your first article.'}
           </p>
           <Link href="/dashboard/articles/new">
             <Button>
@@ -66,8 +67,12 @@ async function ArticleList({
             <div className="flex items-center">
               <FileText className="h-8 w-8 text-blue-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Articles</p>
-                <p className="text-2xl font-bold text-gray-900">{result.pagination.total}</p>
+                <p className="text-sm font-medium text-gray-600">
+                  Total Articles
+                </p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {result.pagination.total}
+                </p>
               </div>
             </div>
           </div>
@@ -77,7 +82,9 @@ async function ArticleList({
               <TrendingUp className="h-8 w-8 text-green-600" />
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">This Page</p>
-                <p className="text-2xl font-bold text-gray-900">{result.articles.length}</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {result.articles.length}
+                </p>
               </div>
             </div>
           </div>
@@ -87,7 +94,9 @@ async function ArticleList({
               <Clock className="h-8 w-8 text-purple-600" />
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Pages</p>
-                <p className="text-2xl font-bold text-gray-900">{result.pagination.pages}</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {result.pagination.pages}
+                </p>
               </div>
             </div>
           </div>
@@ -96,8 +105,12 @@ async function ArticleList({
             <div className="flex items-center">
               <FileText className="h-8 w-8 text-orange-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Current Page</p>
-                <p className="text-2xl font-bold text-gray-900">{result.pagination.page}</p>
+                <p className="text-sm font-medium text-gray-600">
+                  Current Page
+                </p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {result.pagination.page}
+                </p>
               </div>
             </div>
           </div>
@@ -111,12 +124,17 @@ async function ArticleList({
 
         {result.pagination.pages > 1 && (
           <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: result.pagination.pages }, (_, i) => i + 1).map((page) => {
+            {Array.from(
+              { length: result.pagination.pages },
+              (_, i) => i + 1
+            ).map((page) => {
               const isCurrentPage = page === result.pagination.page;
               const searchParamsForPage = new URLSearchParams();
 
-              if (resolvedSearchParams.search) searchParamsForPage.set('search', resolvedSearchParams.search);
-              if (resolvedSearchParams.tags) searchParamsForPage.set('tags', resolvedSearchParams.tags);
+              if (resolvedSearchParams.search)
+                searchParamsForPage.set('search', resolvedSearchParams.search);
+              if (resolvedSearchParams.tags)
+                searchParamsForPage.set('tags', resolvedSearchParams.tags);
               if (page > 1) searchParamsForPage.set('page', page.toString());
 
               const href = `/dashboard${searchParamsForPage.toString() ? `?${searchParamsForPage.toString()}` : ''}`;
@@ -139,13 +157,16 @@ async function ArticleList({
   } catch (error: unknown) {
     console.error('Failed to fetch articles:', error);
 
-    if ((error as { message: string }).message.includes('Authentication failed')) {
+    if (
+      (error as { message: string }).message.includes('Authentication failed')
+    ) {
       return (
         <div className="text-center py-12">
           <Alert variant="destructive" className="max-w-md mx-auto mb-6">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              Your session has expired. Please login again to access your articles.
+              Your session has expired. Please login again to access your
+              articles.
             </AlertDescription>
           </Alert>
           <Link href="/login">
@@ -171,7 +192,9 @@ async function ArticleList({
   }
 }
 
-export default async function DashboardPage({ searchParams }: DashboardPageProps) {
+export default async function DashboardPage({
+  searchParams,
+}: DashboardPageProps) {
   const resolvedSearchParams = await searchParams;
 
   return (

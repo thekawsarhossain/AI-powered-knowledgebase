@@ -1,8 +1,8 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export function formatDate(date: string | Date): string {
@@ -10,7 +10,7 @@ export function formatDate(date: string | Date): string {
   return dateObj.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric'
+    day: 'numeric',
   });
 }
 
@@ -21,7 +21,7 @@ export function formatDateTime(date: string | Date): string {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   });
 }
 
@@ -41,8 +41,10 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
   };
 }
 
-export function generateStaticParams(totalPages: number): Array<{ page: string }> {
+export function generateStaticParams(
+  totalPages: number
+): Array<{ page: string }> {
   return Array.from({ length: totalPages }, (_, i) => ({
-    page: (i + 1).toString()
+    page: (i + 1).toString(),
   }));
 }

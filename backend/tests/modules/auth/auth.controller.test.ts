@@ -7,7 +7,12 @@ describe('Auth Controller', () => {
         await prisma.user.deleteMany({
             where: {
                 email: {
-                    contains: 'test'
+                    in: [
+                        'test@example.com',
+                        'test-existing@example.com',
+                        'test-invalid@example.com',
+                        'test-login@example.com'
+                    ]
                 }
             }
         });
@@ -37,7 +42,7 @@ describe('Auth Controller', () => {
 
         it('should return 400 if user already exists', async () => {
             const userData = {
-                email: 'existing@example.com',
+                email: 'test-existing@example.com',
                 password: 'password123'
             };
 
@@ -72,7 +77,7 @@ describe('Auth Controller', () => {
 
         it('should return 400 for short password', async () => {
             const userData = {
-                email: 'test@example.com',
+                email: 'test-invalid@example.com',
                 password: '123'
             };
 
@@ -91,14 +96,14 @@ describe('Auth Controller', () => {
             await request(app)
                 .post('/api/auth/register')
                 .send({
-                    email: 'logintest@example.com',
+                    email: 'test-login@example.com',
                     password: 'password123'
                 });
         });
 
         it('should login successfully with valid credentials', async () => {
             const loginData = {
-                email: 'logintest@example.com',
+                email: 'test-login@example.com',
                 password: 'password123'
             };
 
@@ -129,7 +134,7 @@ describe('Auth Controller', () => {
 
         it('should return 401 for invalid password', async () => {
             const loginData = {
-                email: 'logintest@example.com',
+                email: 'test-login@example.com',
                 password: 'wrongpassword'
             };
 
