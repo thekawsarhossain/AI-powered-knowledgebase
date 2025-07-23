@@ -60,9 +60,9 @@ export function ArticleForm({ initialData, mode }: ArticleFormProps) {
   const handleFormSubmit = (data: ArticleFormData) => {
     const tags = data.tags
       ? data.tags
-          .split(',')
-          .map((tag) => tag.trim())
-          .filter((tag) => tag.length > 0)
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter((tag) => tag.length > 0)
       : [];
 
     const articleData = {
@@ -82,7 +82,7 @@ export function ArticleForm({ initialData, mode }: ArticleFormProps) {
         }
 
         if (result.success) {
-          toast(mode === 'create' ? 'Article Created' : 'Article Updated', {
+          toast.success(mode === 'create' ? 'Article Created' : 'Article Updated', {
             description: `Your article has been ${mode === 'create' ? 'created' : 'updated'} successfully.`,
           });
           router.push('/dashboard');
@@ -91,7 +91,7 @@ export function ArticleForm({ initialData, mode }: ArticleFormProps) {
           throw new Error(result.error);
         }
       } catch (error: unknown) {
-        toast('Error', {
+        toast.error('Error', {
           description:
             (error as { message: string }).message ||
             `Failed to ${mode} article`,

@@ -50,7 +50,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <AuthProvider>{children}</AuthProvider>
-        <Toaster position="top-right" />
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

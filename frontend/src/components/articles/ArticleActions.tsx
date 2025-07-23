@@ -54,7 +54,7 @@ export function ArticleActions({
       const result = await deleteArticleAction(articleId);
 
       if (result.success) {
-        toast('Article Deleted', {
+        toast.success('Article Deleted', {
           description: 'The article has been successfully deleted.',
         });
         router.refresh();
@@ -62,7 +62,7 @@ export function ArticleActions({
         throw new Error(result.error);
       }
     } catch (error: unknown) {
-      toast('Error', {
+      toast.error('Error', {
         description:
           (error as { message: string }).message || 'Failed to delete article',
       });
@@ -78,7 +78,7 @@ export function ArticleActions({
       const result = await summarizeArticleAction(articleId);
 
       if (result.success) {
-        toast('Summary Generated', {
+        toast.success('Summary Generated', {
           description: 'Article summary has been generated successfully.',
         });
         router.refresh();
@@ -86,7 +86,7 @@ export function ArticleActions({
         throw new Error(result.error);
       }
     } catch (error: unknown) {
-      toast('Error', {
+      toast.error('Error', {
         description:
           (error as { message: string }).message ||
           'Failed to generate summary',
