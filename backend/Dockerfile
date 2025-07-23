@@ -2,19 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-RUN npm install -g typescript
-
 COPY package*.json ./
-RUN npm ci --only=production
-
-
 COPY prisma ./prisma/
 
-RUN npx prisma generate
+RUN npm ci
 
 COPY . .
 
+RUN npx prisma generate
 RUN npm run build
+
+RUN npm prune --production
 
 EXPOSE 8000
 
@@ -23,5 +21,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     if (res.statusCode === 200) process.exit(0); else process.exit(1); \
   }).on('error', () => process.exit(1));"
 
-# CMD ["npm", "start"]
-CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/index.js"]
