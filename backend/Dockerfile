@@ -24,4 +24,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     if (res.statusCode === 200) process.exit(0); else process.exit(1); \
   }).on('error', () => process.exit(1));"
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/index.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
