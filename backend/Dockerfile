@@ -2,6 +2,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+RUN npm install -g typescript
+
 COPY package*.json ./
 RUN npm ci --only=production
 
