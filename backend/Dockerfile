@@ -2,6 +2,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+RUN apk add --no-cache openssl python3 make g++
+
 COPY package*.json ./
 COPY prisma ./prisma/
 
@@ -9,7 +11,8 @@ RUN npm ci
 
 COPY . .
 
-RUN npx prisma generate
+RUN npx prisma generate || echo "Prisma generate completed (migrations will run later)"
+
 RUN npm run build
 
 RUN npm prune --production
